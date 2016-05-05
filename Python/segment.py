@@ -45,8 +45,8 @@ def seg(inp):
 		if not ans == None:
 			vit.append(ans)
 	
-	sorted(vit, key=lambda path: path[1], reverse=True)
-	
+	vit.sort(key=lambda path: path[1], reverse=False)
+
 	#return max viterbi path
 	if len(vit) > 0:
 		return vit[-1][0]

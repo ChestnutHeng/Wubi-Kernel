@@ -22,6 +22,12 @@ def rm_dup(lst):
             rv.append(item)
     return rv
 
+def find_uni_map(mp, ele):
+	if ele in mp:
+		return mp[ele]
+	else:
+		return None
+	
 def load_map():
 	"LOAD maps"
 	bigram = rd_fl("bigram.txt")
@@ -49,7 +55,7 @@ def load_map():
 def viterbi(test,uni_map, big_map, wd_map, wubi):	
 	"main viterbi function"
 	if(len(test) == 0):
-		test = ["ekty", "gc", "mqcy", "lg"]
+		test = [" ", " ", " "]
 
 	candidate = []
 
@@ -72,10 +78,10 @@ def viterbi(test,uni_map, big_map, wd_map, wubi):
 	for col in range(0, len(candidate)):
 		for row in range(0, len(candidate[col])):
 		    if col == 0:
-		        coeff_mp[col][row] = uni_map[candidate[col][row]]
+		        coeff_mp[col][row] = find_uni_map(uni_map, candidate[col][row])
 		    else:
 		        coeff_mp[col][row] = None
-		    left_mp[col][row] = uni_map[candidate[col][row]]
+		    left_mp[col][row] = find_uni_map(uni_map, candidate[col][row])
 		    bptr_mp[col][row] = -1
 	INF=-500
 	#print(coeff_mp)
