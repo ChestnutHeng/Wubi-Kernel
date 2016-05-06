@@ -51,7 +51,7 @@ def viterbi(test,uni_map, big_map, wd_map, wubi):
 	"main viterbi function"
 	if(len(test) == 0):
 		test = [" ", " ", " "]
-
+	test += ["zzzz"]
 	candidate = []
 
 	for can_item in test:
