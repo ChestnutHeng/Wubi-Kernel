@@ -22,11 +22,6 @@ def rm_dup(lst):
             rv.append(item)
     return rv
 
-def find_uni_map(mp, ele):
-	if ele in mp:
-		return mp[ele]
-	else:
-		return None
 	
 def load_map():
 	"LOAD maps"
@@ -78,10 +73,10 @@ def viterbi(test,uni_map, big_map, wd_map, wubi):
 	for col in range(0, len(candidate)):
 		for row in range(0, len(candidate[col])):
 		    if col == 0:
-		        coeff_mp[col][row] = find_uni_map(uni_map, candidate[col][row])
+		        coeff_mp[col][row] = uni_map[candidate[col][row]]
 		    else:
 		        coeff_mp[col][row] = None
-		    left_mp[col][row] = find_uni_map(uni_map, candidate[col][row])
+		    left_mp[col][row] = uni_map[candidate[col][row]]
 		    bptr_mp[col][row] = -1
 	INF=-500
 	#print(coeff_mp)
@@ -92,7 +87,7 @@ def viterbi(test,uni_map, big_map, wd_map, wubi):
 		        link_coeff = INF
 		        if link in big_map:
 		            link_coeff = big_map[link]
-		        ncoeff = coeff_mp[col - 1][row_prev] * link_coeff * left_mp[col][row]
+		        ncoeff = coeff_mp[col - 1][row_prev] + link_coeff + left_mp[col][row]
 		        if coeff_mp[col][row] is None:
 		            coeff_mp[col][row] = ncoeff
 		            bptr_mp[col][row] = row_prev

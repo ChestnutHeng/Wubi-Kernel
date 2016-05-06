@@ -38,7 +38,7 @@ while len(inputSylla) == 0 or inputSylla[-1] != "#":
 				if wubi_code in sg.uni_map:
 					tp_list.append([sg.wd_map[wubi_code],it,sg.uni_map[wubi_code]])
 				counter += 1
-			if counter >= 30:
+			if counter >= 100:
 				flag = False
 				tp_list.sort(key=lambda info: info[2], reverse=True)
 				screen.append(tp_list)
@@ -58,6 +58,8 @@ while len(inputSylla) == 0 or inputSylla[-1] != "#":
 			print("")
 		print(line[0:2],end="")
 		i += 1
+		if i >= 30:
+			break
 	print("")
 	
 	#print screen
