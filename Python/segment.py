@@ -43,9 +43,15 @@ def seg(inp):
 	for segline in seg:
 		ans = vt.viterbi(segline,uni_map, big_map, wd_map, wubi)
 		if not ans == None:
+			#ans[1] = ans[1] - 20*len(ans[0])
 			vit.append(ans)
 	
 	vit.sort(key=lambda path: path[1], reverse=False)
+	
+	for v in vit:
+		#print(v)
+		pass
+	
 	#return max viterbi path
 	if len(vit) > 0:
 		return vit[-1][0]

@@ -78,7 +78,7 @@ def viterbi(test,uni_map, big_map, wd_map, wubi):
 		        coeff_mp[col][row] = None
 		    left_mp[col][row] = uni_map[candidate[col][row]]
 		    bptr_mp[col][row] = -1
-	INF=-500
+	INF = -13.8
 	#print(coeff_mp)
 	for col in range(1, len(candidate)):
 		for row in range(0, len(candidate[col])):
@@ -111,6 +111,6 @@ def viterbi(test,uni_map, big_map, wd_map, wubi):
 		col -= 1
 
 	fin.reverse()
-	return fin, coeff_mp[-1][mx_id]
+	return [fin, coeff_mp[-1][mx_id]]
 	#print(fin)
 

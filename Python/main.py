@@ -2,7 +2,7 @@
 
 import segment as sg
 
-inputSylla = ""
+inputSylla = "#"
 screen = []
 output = ""
 
@@ -11,8 +11,10 @@ output = ""
 #print(sg.seg("ektygcmqcqlg"))
 #print(sg.seg("wygdgdrndhqa"))
 
-while len(inputSylla) == 0 or inputSylla[-1] != "#":
+while True:
 	#read input
+	if inputSylla[-1] == "#":
+		inputSylla = ""
 	inp_ch = input("Please input char:")
 	if inp_ch != "" and inp_ch[0].isdigit():
 		#if input is a number
