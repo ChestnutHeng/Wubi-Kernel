@@ -8,7 +8,7 @@ big_map = dicts[1]
 
 
 wd_map = {}
-f = open("word.txt")
+f = open("../Dict/word.txt")
 lines = f.readlines()
 for line in lines:
 	line = line.strip()
@@ -16,7 +16,7 @@ for line in lines:
 	wd_map[line[1]] = line[0]
 	
 wubi_map = {}
-fc = open("wubi.txt")
+fc = open("../Dict/wubi.txt")
 lines = fc.readlines()
 for line in lines:
 	line = line.strip()

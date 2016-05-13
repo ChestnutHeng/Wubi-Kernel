@@ -12,7 +12,10 @@ output = ""
 
 inputSylla = input()
 while inputSylla != "#":
-	print(sg.seg(inputSylla))
+	ans = sg.seg(inputSylla)
+	for i in range(0,len(ans)-1):
+		print(ans[i],end="")
+	print("")
 	inputSylla = input()
 	
 
