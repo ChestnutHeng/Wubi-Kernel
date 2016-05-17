@@ -11,32 +11,38 @@ wubi = dicts[3]
 wubi_map = {}
 ans = []
 
-def all_seg(inp,seg,level):
+def all_seg(inp,seg,level,tail):
 	"OUTPUT all segments"
 	global ans
 	if level >= len(inp):
 		seg.append(copy.deepcopy(ans))
+		seg[-1][-1] += tail
 		return
 	else:
 		if level + 2 <= len(inp):
 			ans.append(inp[level:level + 2])
-			all_seg(inp,seg,level + 2)
+			all_seg(inp,seg,level + 2,tail)
 			ans.pop()
 		if level + 4 <= len(inp):
 			ans.append(inp[level:level + 4])
-			all_seg(inp,seg,level + 4)
+			all_seg(inp,seg,level + 4,tail)
 			ans.pop()
 	
 
 def seg(inp):
 	"segmenter main function"
+	tail = ""
+	if len(inp) % 2 != 0:
+		tail = inp[-1]
+		inp = inp[:-1]
+		
 	#load wubimap
 	for line in wubi:
 		wubi_map[line[0]] = int(line[1])
 	
 	#all segments here
 	seg = []
-	all_seg(inp,seg,0)
+	all_seg(inp,seg,0,tail)
 	
 	#find viterbi path every segment
 	vit = []

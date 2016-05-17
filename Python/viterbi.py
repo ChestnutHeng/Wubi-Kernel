@@ -57,7 +57,7 @@ def viterbi(test,uni_map, big_map, wd_map, wubi):
 	for can_item in test:
 		candidate.append([])
 		for wubi_line in wubi:
-			if (wubi_line[0].startswith(can_item) and len(can_item) == 2)\
+			if (wubi_line[0].startswith(can_item) and len(wd_map[int(wubi_line[1])]) == 1)\
 					or wubi_line[0] == can_item:
 				candidate[-1].append(int(wubi_line[1]))
 		if len(candidate[-1]) == 0:
